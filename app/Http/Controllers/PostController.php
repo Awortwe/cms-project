@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
@@ -28,7 +29,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('backend.posts.create');
+        $categories = Category::all();
+        return view('backend.posts.create', compact('categories'));
     }
 
     /**
@@ -50,6 +52,7 @@ class PostController extends Controller
             'content' => $request->content,
             'image' => $save_url,
             'published_at' => $request->published_at,
+            'category_id' => $request->category_id,
         ]);
 
         $notification = array(
@@ -104,6 +107,7 @@ class PostController extends Controller
                 'description' => $request->description,
                 'content' => $request->content,
                 'image' => $save_url,
+                'category_id' => $request->category_id,
                 'published_at' => $request->published_at,
             ]);
 
@@ -159,10 +163,10 @@ class PostController extends Controller
 
     public function deleteTrashed($id)
     {
-
         $post = Post::withTrashed()->where('id', $id)->firstOrFail();
+        $img = $post->image;
+        unlink($img);
         $post->forceDelete();
-        unlink(public_path('uploads/post_images/'.  $post->image));
 
         $notification = array(
             'alert-type' => 'success',

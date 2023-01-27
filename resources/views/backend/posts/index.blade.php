@@ -33,6 +33,7 @@
                                 <th>S1</th>
                                 <th>Image</th>
                                 <th>Title</th>
+                                <th>Category</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -47,6 +48,7 @@
                                     width="60px" height="50px">
                                 </td>
                                 <td>{{ $item->title }}</td>
+                                <td>{{ $item['category']['name'] }}</td>
                                 <td>
                                     <a href="{{ route('posts.edit', $item->id) }}"
                                         class="btn btn-info sm"

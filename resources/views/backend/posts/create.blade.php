@@ -55,12 +55,6 @@
                             </div>
                             <!-- end row -->
 
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected="">Open this select menu</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
 
                             <div class="row mb-3">
                                 <label for="name" class="col-sm-2 col-form-label"></label>
@@ -70,6 +64,19 @@
                                     data-holder-rendered="true">
                                 </div>
                             </div>
+
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Category</label>
+                                <div class="col-sm-10">
+                                    <select name="category_id" class="form-select"  aria-label="Default select example">
+                                        <option selected="">Open this select menu</option>
+                                        @foreach ($categories as $item)
+                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                        @endforeach
+                                        </select>
+                                </div>
+                            </div>
+                            <!-- end row -->
 
 
                             <input type="submit" value="Add Post" class="btn btn-info waves-effect waves-light">
