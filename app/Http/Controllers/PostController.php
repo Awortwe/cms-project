@@ -11,6 +11,11 @@ use Intervention\Image\Facades\Image;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('verify.categories.count')->only(['create', 'store']);
+    }
+
     /**
      * Display a listing of the resource.
      *

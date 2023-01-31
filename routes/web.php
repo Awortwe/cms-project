@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -61,6 +62,10 @@ Route::controller(PostController::class)->group(function (){
     Route::get('posts/edit/{post}', 'edit')->name('posts.edit');
     Route::post('posts/update', 'update')->name('posts.update');
     Route::post('posts/restore', 'restore')->name('posts.restore');
+});
+
+Route::controller(TagController::class)->group(function (){
+    Route::get('tags/index', 'index')->name('tags.index');
 });
 
 require __DIR__.'/auth.php';

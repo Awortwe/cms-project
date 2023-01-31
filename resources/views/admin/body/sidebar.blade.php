@@ -34,12 +34,23 @@
         <li>
             <a href="javascript: void(0);" class="has-arrow waves-effect">
                 <i class="ri-mail-send-line"></i>
+                <span>Manage Tags</span>
+            </a>
+            <ul class="sub-menu" aria-expanded="false">
+                <li><a href="{{ route('tags.index') }}">All Tags</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="javascript: void(0);" class="has-arrow waves-effect">
+                <i class="ri-mail-send-line"></i>
                 <span>Trashed Posts</span>
             </a>
             <ul class="sub-menu" aria-expanded="false">
                 <li><a href="{{ route('trashed.posts') }}">All Trashed Posts</a></li>
             </ul>
         </li>
+
 
     </ul>
 </div>
