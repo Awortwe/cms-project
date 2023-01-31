@@ -26,7 +26,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.tags.create');
     }
 
     /**
@@ -37,7 +37,13 @@ class TagController extends Controller
      */
     public function store(StoreTagRequest $request)
     {
-        //
+        $validated = $request->validated();
+        Tag::create($validated);
+        $notification = array(
+            'alert-type' => 'success',
+            'message' => 'Tag added successfully'
+        );
+        return redirect()->route('tags.index')->with($notification);
     }
 
     /**
@@ -59,7 +65,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+        return view('backend.tags.edit', compact('tag'));
     }
 
     /**
@@ -71,7 +77,7 @@ class TagController extends Controller
      */
     public function update(UpdateTagRequest $request, Tag $tag)
     {
-        //
+        
     }
 
     /**

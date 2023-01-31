@@ -66,6 +66,9 @@ Route::controller(PostController::class)->group(function (){
 
 Route::controller(TagController::class)->group(function (){
     Route::get('tags/index', 'index')->name('tags.index');
+    Route::get('tags/create', 'create')->name('tags.create');
+    Route::post('tags/store', 'store')->name('tags.store');
+    Route::get('tags/edit/{tag}', 'edit')->name('tags.edit');
 });
 
 require __DIR__.'/auth.php';

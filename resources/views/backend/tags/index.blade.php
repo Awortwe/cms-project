@@ -20,7 +20,7 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <a href=""
+                        <a href="{{ route('tags.create') }}"
                         class="btn btn-dark btn-rounded waves-effect waves-light"
                         style="float: right;">
                             Add Tag</a><br><br>
@@ -43,7 +43,7 @@
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $item->name }}</td>
                                 <td>
-                                    <a href=""
+                                    <a href="{{ route('tags.edit', $item->id) }}"
                                         class="btn btn-info sm"
                                     title="Edit Tag"> <i class="fas fa-edit"></i></a>
                                     <a href=""
